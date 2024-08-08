@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LibraryAPI.DomainObject;
 using LibraryAPI.DomainObject.Buku;
 using LibraryAPI.DomainObject.Category;
 using LibraryAPI.DomainObject.Publisher;
@@ -235,6 +236,53 @@ namespace LibraryAPI.BusinessFacade
                 throw new Exception(ex.Message);
             }
             
+        }
+
+        public async Task<ResponseBase> InsertV2(RequestInsert request)
+        {
+            ResponseBase response = new();
+            try
+            {
+                var CheckDuplicate = await _context.Bukus.SingleOrDefaultAsync(x => x.Title == request.Title);
+                if (CheckDuplicate != null)
+                {
+                    response.Message = ($"Judul Buku {request.Title} Sudah Tersedia");
+                    response.StatusCode = false;
+
+                    return response;
+                }
+                var isValidStorage = await _context.storageLocations.SingleOrDefaultAsync(x => x.ID == request.StorageLocationId);
+                var isValidCategory = await _context.categories.SingleOrDefaultAsync(x => x.ID == request.CategoryId);
+                var isValidPublisher = await _context.publishers.SingleOrDefaultAsync(x => x.ID == request.PublisherId);
+                if (isValidCategory == null || isValidPublisher == null || isValidStorage == null || request.Jumlah <= 0 || request.InStock > request.Jumlah)
+                {
+                    response.Message = ($"Data Insert Tidak Valid ");
+                    response.StatusCode = false;
+
+                    return response;
+                }
+                               
+                Buku dataInput = new Buku();
+                dataInput.Title = request.Title;
+                dataInput.CategoryID = request.CategoryId;
+                dataInput.PublisherID = request.PublisherId;
+                dataInput.StorageLocationID = request.StorageLocationId;
+                dataInput.Jumlah = request.Jumlah;
+                dataInput.InStock = request.InStock;
+                
+                _context.Bukus.Add(dataInput);
+                await _context.SaveChangesAsync();
+
+                response.Message = "Insert Success";
+                response.StatusCode = true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+            return response;
         }
     }
 }

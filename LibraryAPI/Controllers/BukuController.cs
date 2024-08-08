@@ -3,6 +3,7 @@ using LibraryAPI.DomainObject;
 using LibraryAPI.DomainObject.Buku;
 using LibraryAPI.Interface;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryAPI.Controllers
@@ -82,7 +83,26 @@ namespace LibraryAPI.Controllers
 
             }
             return response;
+        }
 
+        [HttpPost("InsertData")]
+        public async Task<ActionResult> InsertData(RequestInsert request) 
+        {
+            ResponseBase response = new();
+            try
+            {
+                var result = await _buku.InsertV2(request);
+                response.StatusCode = result.StatusCode;
+                response.Message = result.Message;
+                return result.StatusCode ? Ok(response) : BadRequest(response);
+            }
+            catch (Exception ex)
+            {
+
+                response.Message = ex.Message;
+                response.StatusCode = false;
+                return BadRequest(response);
+            }
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using LibraryAPI.DomainObject.Buku;
+﻿using LibraryAPI.DomainObject;
+using LibraryAPI.DomainObject.Buku;
 using LibraryAPI.Models;
 
 namespace LibraryAPI.Interface
@@ -9,5 +10,7 @@ namespace LibraryAPI.Interface
 
         Task<Data> InfoByNama(RequestDataBuku request);
         Task<IEnumerable<Data>> InfoByCustom(RequestDataCustom request);
+
+        Task<ResponseBase>InsertV2(RequestInsert request);
     }
 }
