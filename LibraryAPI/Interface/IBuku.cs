@@ -12,5 +12,7 @@ namespace LibraryAPI.Interface
         Task<IEnumerable<Data>> InfoByCustom(RequestDataCustom request);
 
         Task<ResponseBase>InsertV2(RequestInsert request);
+
+        Task<ResponseBase> UpdateV2(RequestUpdate request);
     }
 }

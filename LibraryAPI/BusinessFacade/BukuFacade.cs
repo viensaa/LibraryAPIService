@@ -22,9 +22,24 @@ namespace LibraryAPI.BusinessFacade
             _context = context;
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var findData = await _context.Bukus.SingleOrDefaultAsync(x => x.ID == id);
+                if (findData == null)
+                {
+                    throw new Exception($"Buku dengan ID {id} Tidak DiTemukan ");
+
+                }
+                _context.Remove(findData);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<IEnumerable<Buku>> GetAll()
@@ -284,5 +299,49 @@ namespace LibraryAPI.BusinessFacade
             }
             return response;
         }
+
+        public async Task<ResponseBase> UpdateV2(RequestUpdate request)
+        {
+            ResponseBase response = new ResponseBase();
+            try
+            {
+                var findData = await _context.Bukus.SingleOrDefaultAsync(x=> x.ID == request.Id);
+                if (findData == null) 
+                {
+                    response.Message = ($"Data Buku dengan ID {request.Id} Title {request.Title} Tidak Tersedia");
+                    response.StatusCode = false;
+
+                    return response;
+                }
+                var isValidStorage = await _context.storageLocations.SingleOrDefaultAsync(x => x.ID == request.StorageLocationId);
+                var isValidCategory = await _context.categories.SingleOrDefaultAsync(x => x.ID == request.CategoryId);
+                var isValidPublisher = await _context.publishers.SingleOrDefaultAsync(x => x.ID == request.PublisherId);
+                if (isValidCategory == null || isValidPublisher == null || isValidStorage == null || request.Jumlah <= 0 || request.InStock > request.Jumlah)
+                {
+                    response.Message = ($"Data Update Tidak Valid ");
+                    response.StatusCode = false;
+
+                    return response;
+                }
+                findData.Title = request.Title;
+                findData.CategoryID = request.CategoryId;
+                findData.PublisherID = request.PublisherId;
+                findData.StorageLocationID = request.StorageLocationId;
+                findData.Jumlah = request.Jumlah;
+                findData.InStock = request.InStock;
+
+                await _context.SaveChangesAsync();
+                response.Message = "Update Success";
+                response.StatusCode = true;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception (ex.Message);
+            }
+            return response;
+        }
+
+
     }
 }

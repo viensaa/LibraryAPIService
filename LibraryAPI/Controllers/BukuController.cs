@@ -2,6 +2,7 @@
 using LibraryAPI.DomainObject;
 using LibraryAPI.DomainObject.Buku;
 using LibraryAPI.Interface;
+using LibraryAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -104,6 +105,45 @@ namespace LibraryAPI.Controllers
                 return BadRequest(response);
             }
         }
+
+        [HttpPut("UpdateBuku")]
+        public async Task<ActionResult> UpdateBuku(RequestUpdate request) 
+        {
+            ResponseBase response = new();
+            try
+            {
+                var result = await _buku.UpdateV2(request);
+                response.StatusCode = result.StatusCode;
+                response.Message = result.Message;
+                return result.StatusCode ? Ok(response) : BadRequest(response);
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.StatusCode = false;
+                return BadRequest(response);
+            }
+        }
+
+        [HttpDelete("DeleteBuku")]
+        public async Task<ActionResult> DeleteBuku(int id) 
+        {
+            ResponseBase response = new();
+            try
+            {
+                await _buku.Delete(id);
+                response.Message = ($"Data Dengan ID {id} Berhasil Dihapus");
+                response.StatusCode = true;
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.StatusCode = false;
+                return BadRequest(response);
+            }
+        }
+
 
     }
 }
