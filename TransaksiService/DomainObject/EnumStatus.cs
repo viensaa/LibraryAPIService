@@ -9,7 +9,20 @@
     }
     public enum TransactionType
     {
-        returning = 0,
-        borrow = 1,
+        returning = 44,
+        borrow = 45,
     }
+
+    public enum enumStatusCode
+    {
+        success = 1,
+        failure = 0,
+
+    }
+    public enum RowStatus
+    {
+        Active = 1,
+        NonActive = 0,
+    }
+
 }

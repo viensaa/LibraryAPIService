@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TransaksiService.BusinessFacade;
+using TransaksiService.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,12 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("TransactionServiceConnection"));
 });
+
+//menambahkan configurasi auto mapper 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+//menambhakn scope
+builder.Services.AddScoped<IMahasiswa, MahasiswaFacade>();
 
 var app = builder.Build();
 
