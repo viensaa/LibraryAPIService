@@ -14,7 +14,7 @@ namespace TransaksiService.BusinessFacade
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<TransactionDetail> TransactionDetails { get; set; }
         public DbSet<Mahasiswa> Mahasiswas { get; set; } 
-        public DbSet<Staff> Staffs { get; set; }
+        //public DbSet<Staff> Staffs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,10 +33,10 @@ namespace TransaksiService.BusinessFacade
                 .WithMany(m => m.transactions)
                 .HasForeignKey(t => t.MahasiswaId);
 
-            modelBuilder.Entity<Transaction>()
-                .HasOne(t => t.Staff)
-                .WithMany(s => s.Transactions)
-                .HasForeignKey(t => t.StaffId);
+            //modelBuilder.Entity<Transaction>()
+            //    .HasOne(t => t.Staff)
+            //    .WithMany(s => s.Transactions)
+            //    .HasForeignKey(t => t.StaffId);
 
             //transactionDetail Configuration
             modelBuilder.Entity<TransactionDetail>()

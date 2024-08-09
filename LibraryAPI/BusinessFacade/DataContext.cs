@@ -12,9 +12,9 @@ namespace LibraryAPI.BusinessFacade
 
         public DbSet<Buku> Bukus { get; set; }
         public DbSet<Category> categories { get; set; }
-        public DbSet<Mahasiswa> Mahasiswas { get; set; }
+       // public DbSet<Mahasiswa> Mahasiswas { get; set; }
         public DbSet<Publisher> publishers { get; set; }
-        public DbSet<Staff> staffs { get; set; }
+       // public DbSet<Staff> staffs { get; set; }
         public DbSet<StorageLocation> storageLocations { get; set; }
     }
 }

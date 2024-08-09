@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TransaksiService.BusinessFacade;
 
@@ -11,9 +12,11 @@ using TransaksiService.BusinessFacade;
 namespace TransaksiService.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240809113511_migration --help")]
+    partial class migrationhelp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,6 +53,27 @@ namespace TransaksiService.Migrations
                     b.ToTable("Mahasiswas");
                 });
 
+            modelBuilder.Entity("TransaksiService.Model.Staff", b =>
+                {
+                    b.Property<int>("StaffId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StaffId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StaffId");
+
+                    b.ToTable("Staff");
+                });
+
             modelBuilder.Entity("TransaksiService.Model.Transaction", b =>
                 {
                     b.Property<int>("TransactionId")
@@ -59,6 +83,9 @@ namespace TransaksiService.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
 
                     b.Property<int>("MahasiswaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StaffId")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -73,6 +100,8 @@ namespace TransaksiService.Migrations
                     b.HasKey("TransactionId");
 
                     b.HasIndex("MahasiswaId");
+
+                    b.HasIndex("StaffId");
 
                     b.ToTable("Transactions");
                 });
@@ -118,7 +147,15 @@ namespace TransaksiService.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("TransaksiService.Model.Staff", "Staff")
+                        .WithMany("Transactions")
+                        .HasForeignKey("StaffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Mahasiswa");
+
+                    b.Navigation("Staff");
                 });
 
             modelBuilder.Entity("TransaksiService.Model.TransactionDetail", b =>
@@ -135,6 +172,11 @@ namespace TransaksiService.Migrations
             modelBuilder.Entity("TransaksiService.Model.Mahasiswa", b =>
                 {
                     b.Navigation("transactions");
+                });
+
+            modelBuilder.Entity("TransaksiService.Model.Staff", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("TransaksiService.Model.Transaction", b =>
