@@ -22,6 +22,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //menambhakn scope
 builder.Services.AddScoped<IMahasiswa, MahasiswaFacade>();
+builder.Services.AddScoped<ITransaction, TransactionFacade>();
 
 var app = builder.Build();
 

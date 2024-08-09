@@ -13,5 +13,6 @@
         //public Staff Staff { get; set; }
         public Mahasiswa Mahasiswa { get; set; }
         public ICollection<TransactionDetail> TransactionDetails { get; set; }
+
     }
 }

@@ -9,7 +9,7 @@
     }
     public enum TransactionType
     {
-        returning = 44,
+        returning = 40,
         borrow = 45,
     }
 

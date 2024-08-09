@@ -47,7 +47,7 @@ namespace TransaksiService.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Mahasiswas");
+                    b.ToTable("Mahasiswas", (string)null);
                 });
 
             modelBuilder.Entity("TransaksiService.Model.Transaction", b =>
@@ -74,7 +74,7 @@ namespace TransaksiService.Migrations
 
                     b.HasIndex("MahasiswaId");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("TransaksiService.Model.TransactionDetail", b =>
@@ -107,7 +107,7 @@ namespace TransaksiService.Migrations
 
                     b.HasIndex("TransactionId");
 
-                    b.ToTable("TransactionDetails");
+                    b.ToTable("TransactionDetails", (string)null);
                 });
 
             modelBuilder.Entity("TransaksiService.Model.Transaction", b =>
