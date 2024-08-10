@@ -1,0 +1,1087 @@
+{
+	"info": {
+		"_postman_id": "d3fa93fa-998d-450d-ae44-331865896c81",
+		"name": "Library Simple Aplication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21867447"
+	},
+	"item": [
+		{
+			"name": "Book Service",
+			"item": [
+				{
+					"name": "Publisher",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/Publisher",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Publisher"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5164/api/Publisher' \\\r\n  -H 'accept: text/plain'"
+							},
+							"response": []
+						},
+						{
+							"name": "GetByID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/Publisher/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Publisher",
+										"5"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5164/api/Publisher/1' \\\r\n  -H 'accept: text/plain'"
+							},
+							"response": []
+						},
+						{
+							"name": "ByName",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/name=sinar dunia",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"name=sinar dunia"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5164/name=sinar' \\\r\n  -H 'accept: text/plain'"
+							},
+							"response": []
+						},
+						{
+							"name": "Insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"cahaya baru\",\r\n  \"address\": \"Kota Langsa\",\r\n  \"phone\": \"123123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/api/Publisher",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Publisher"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://localhost:5164/api/Publisher' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"name\": \"SinarDunia\",\r\n  \"address\": \"Kota Langsa\",\r\n  \"phone\": \"123123123\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "Insert V2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"rumah makan utama\",\r\n  \"address\": \"Kota Langsa\",\r\n  \"phone\": \"123123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/Insertv2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"Insertv2"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://localhost:5164/Insertv2' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"name\": \"cahaya baru\",\r\n  \"address\": \"Kota Langsa\",\r\n  \"phone\": \"123123123\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 15,\r\n  \"name\": \"Sinar Dunia\",\r\n  \"address\": \"Kebun Ireng\",\r\n  \"phone\": \"081122312312\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/api/Publisher",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Publisher"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'PUT' \\\r\n  'http://localhost:5164/api/Publisher' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"id\": 7,\r\n  \"name\": \"Cahaya Mulia\",\r\n  \"address\": \"Kebun Ireng\",\r\n  \"phone\": \"081122312312\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/Publisher?id=1199",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Publisher"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1199"
+										}
+									]
+								},
+								"description": "Generated from cURL: curl -X 'DELETE' \\\r\n  'http://localhost:5164/api/Publisher?id=6' \\\r\n  -H 'accept: */*'"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Buku",
+					"item": [
+						{
+							"name": "ById",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"Bukuid\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/api/Buku/ById",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Buku",
+										"ById"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://localhost:5164/api/Buku/ByTitle?title=Cara%20Shalat' \\\r\n  -H 'accept: text/plain' \\\r\n  -d ''"
+							},
+							"response": []
+						},
+						{
+							"name": "InfoByCustom",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Belajar Mewarnai\",\r\n  \"categoryId\": \"\",\r\n  \"publisherId\": \"\",\r\n  \"storageLocationId\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/api/Buku/InfoByCustom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Buku",
+										"InfoByCustom"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://localhost:5164/api/Buku/InfoByCustom' \\\r\n  -H 'accept: text/plain' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"title\": \"\",\r\n  \"categoryId\": \"\",\r\n  \"publisherId\": \"10\",\r\n  \"storageLocationId\": \"1\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertData",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Belajar Menghitung Dasar\",\r\n  \"categoryId\": 1,\r\n  \"publisherId\": 1,\r\n  \"storageLocationId\": 1,\r\n  \"jumlah\": 3,\r\n  \"inStock\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/api/Buku/InsertData",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Buku",
+										"InsertData"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://localhost:5164/api/Buku/InsertData' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"title\": \"Testing Error\",\r\n  \"categoryId\": 10,\r\n  \"publisherId\": 0,\r\n  \"storageLocationId\": 0,\r\n  \"jumlah\": 0,\r\n  \"inStock\": 0\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllInfoBuku",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/Buku/GetAllInfoBuku",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Buku",
+										"GetAllInfoBuku"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5164/api/Buku/GetAllInfoBuku' \\\r\n  -H 'accept: text/plain'"
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateBuku",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 5,\r\n  \"title\": \"Naruto Chapter 24\",\r\n  \"categoryId\": 8,\r\n  \"publisherId\": 10,\r\n  \"storageLocationId\": 2,\r\n  \"jumlah\": 4,\r\n  \"inStock\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/api/Buku/UpdateBuku",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Buku",
+										"UpdateBuku"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'PUT' \\\r\n  'http://localhost:5164/api/Buku/UpdateBuku' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"id\": 0,\r\n  \"title\": \"string\",\r\n  \"categoryId\": 0,\r\n  \"publisherId\": 0,\r\n  \"storageLocationId\": 0,\r\n  \"jumlah\": 0,\r\n  \"inStock\": 0\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/Buku/DeleteBuku?id=9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Buku",
+										"DeleteBuku"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "9"
+										}
+									]
+								},
+								"description": "Generated from cURL: curl -X 'DELETE' \\\r\n  'http://localhost:5164/api/Buku/DeleteBuku?id=111' \\\r\n  -H 'accept: */*'"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "StorageLocation",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/StorageLocation",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"StorageLocation"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5164/api/StorageLocation' \\\r\n  -H 'accept: text/plain'"
+							},
+							"response": []
+						},
+						{
+							"name": "ByID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/StorageLocation/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"StorageLocation",
+										"5"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5164/api/StorageLocation/5' \\\r\n  -H 'accept: text/plain'"
+							},
+							"response": []
+						},
+						{
+							"name": "Insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"location\": \"Rak E\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/api/StorageLocation/InsertStorageLocation",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"StorageLocation",
+										"InsertStorageLocation"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://localhost:5164/api/StorageLocation/InsertStorageLocation' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"location\": \"Rak A\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/StorageLocation/DeleteStorageLocation?id=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"StorageLocation",
+										"DeleteStorageLocation"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								},
+								"description": "Generated from cURL: curl -X 'DELETE' \\\r\n  'http://localhost:5164/api/StorageLocation/DeleteStorageLocation?id=6' \\\r\n  -H 'accept: */*'"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "ByID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/Category/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Category",
+										"1"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5164/api/Category/1' \\\r\n  -H 'accept: text/plain'"
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/Category",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Category"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5164/api/Category' \\\r\n  -H 'accept: text/plain'"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertV2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoryCode\": \"A008\",\r\n  \"description\": \"Buku Komik\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/api/category/InsertV2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"category",
+										"InsertV2"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://localhost:5164/InsertV2' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"categoryCode\": \"A001\",\r\n  \"description\": \"Buku Agama\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCategory",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoryCode\": \"A015\",\r\n  \"description\": \"Buku Agama Islam\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5164/api/Category/UpdateCategory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Category",
+										"UpdateCategory"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'PUT' \\\r\n  'http://localhost:5164/api/Category/UpdateCategory' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"categoryCode\": \"A005\",\r\n  \"description\": \"Buku Agama Islam\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5164/api/Category/DeleteCategory?id=40",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5164",
+									"path": [
+										"api",
+										"Category",
+										"DeleteCategory"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "40"
+										}
+									]
+								},
+								"description": "Generated from cURL: curl -X 'DELETE' \\\r\n  'http://localhost:5164/api/Category/DeleteCategory?id=100' \\\r\n  -H 'accept: */*'"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transaction Service",
+			"item": [
+				{
+					"name": "Mahasiswa",
+					"item": [
+						{
+							"name": "Delete Data",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7176/api/Mahasiswa/DeleteData?nim=170605",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7176",
+									"path": [
+										"api",
+										"Mahasiswa",
+										"DeleteData"
+									],
+									"query": [
+										{
+											"key": "nim",
+											"value": "170605"
+										}
+									]
+								},
+								"description": "Generated from cURL: curl -X 'DELETE' \\\r\n  'https://localhost:7176/api/Mahasiswa/DeleteData?nim=1111' \\\r\n  -H 'accept: */*'"
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7176/api/Mahasiswa/GetAll",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7176",
+									"path": [
+										"api",
+										"Mahasiswa",
+										"GetAll"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://localhost:7176/api/Mahasiswa/GetAll' \\\r\n  -H 'accept: text/plain'"
+							},
+							"response": []
+						},
+						{
+							"name": "GetDataByCustomSearch",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nim\": \"170601\",\r\n  \"nama\": \"\",\r\n  \"kelas\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7176/api/Mahasiswa/GetDataByCustomSearch",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7176",
+									"path": [
+										"api",
+										"Mahasiswa",
+										"GetDataByCustomSearch"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://localhost:7176/api/Mahasiswa/GetDataByCustomSearch' \\\r\n  -H 'accept: text/plain' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"nim\": \"string\",\r\n  \"nama\": \"string\",\r\n  \"kelas\": \"string\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "ChangeData",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nim\": \"170601\",\r\n  \"nama\": \"Afrizal\",\r\n  \"kelas\": \"S1-TK-001\",\r\n  \"rowStatus\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7176/api/Mahasiswa/ChangeData",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7176",
+									"path": [
+										"api",
+										"Mahasiswa",
+										"ChangeData"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'PUT' \\\r\n  'https://localhost:7176/api/Mahasiswa/ChangeData' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"nim\": \"string\",\r\n  \"nama\": \"string\",\r\n  \"kelas\": \"string\",\r\n  \"rowStatus\": 0\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "CreateMahasiswa",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nim\": \"170607\",\r\n  \"nama\": \"Hansono\",\r\n  \"kelas\": \"D3-TK-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7176/api/Mahasiswa/CreateMahasiswa",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7176",
+									"path": [
+										"api",
+										"Mahasiswa",
+										"CreateMahasiswa"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://localhost:7176/api/Mahasiswa/CreateMahasiswa' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"nim\": \"Afrizal\",\r\n  \"nama\": \"string\",\r\n  \"kelas\": \"string\"\r\n}'"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Transaction",
+					"item": [
+						{
+							"name": "GetAllDataByCustom",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"transactionID\": \"1\",\r\n  \"transactionType\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7176/api/Transaction/GetAllData",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7176",
+									"path": [
+										"api",
+										"Transaction",
+										"GetAllData"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://localhost:7176/api/Transaction/GetAllData' \\\r\n  -H 'accept: text/plain' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"transactionID\": \"string\",\r\n  \"transactionType\": \"string\",\r\n  \"status\": \"string\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "CreateTransactionBorrow",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nim\": \"170601\",\r\n  \"bukuID\": 5,\r\n  \"transactionType\": 45,\r\n  \"quantity\": 1,\r\n  \"borrowDate\": \"2024-08-10\",\r\n  \"returnDate\": \"2024-08-15\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7176/api/Transaction/CreateTransaction",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7176",
+									"path": [
+										"api",
+										"Transaction",
+										"CreateTransaction"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://localhost:7176/api/Transaction/CreateTransaction' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"nim\": \"string\",\r\n  \"bukuID\": 0,\r\n  \"transactionType\": 0,\r\n  \"quantity\": 0,\r\n  \"borrowDate\": \"2024-08-10T06:02:08.762Z\",\r\n  \"returnDate\": \"2024-08-10T06:02:08.762Z\"\r\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "CreateTransactionReturn",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nim\": \"170601\",\r\n  \"bukuID\": 5,\r\n  \"transactionType\": 40,\r\n  \"quantity\": 1,\r\n  \"borrowDate\": \"2024-08-15\",\r\n  \"returnDate\": \"2024-08-10\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7176/api/Transaction/CreateTransaction",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7176",
+									"path": [
+										"api",
+										"Transaction",
+										"CreateTransaction"
+									]
+								},
+								"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://localhost:7176/api/Transaction/CreateTransaction' \\\r\n  -H 'accept: */*' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"nim\": \"string\",\r\n  \"bukuID\": 0,\r\n  \"transactionType\": 0,\r\n  \"quantity\": 0,\r\n  \"borrowDate\": \"2024-08-10T06:02:08.762Z\",\r\n  \"returnDate\": \"2024-08-10T06:02:08.762Z\"\r\n}'"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,7 @@
+pada Endpoint CreateTransaction terdapat inputan TransactionType
+terdapat 2 transactionType yaitu: borrow dan Return 
+nilai Borrow = 45
+nilai Return = 40
+
+jika transaksi Borrow(45) maka kolom returnDate Bersifat Mandatory Untuk diisi dan harus lebih besar dari tanggal hari ini
+jika kondisi pengembalian(40) maka returndate harus tanggal hari ini
