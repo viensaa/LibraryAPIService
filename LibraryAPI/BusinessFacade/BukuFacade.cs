@@ -316,7 +316,7 @@ namespace LibraryAPI.BusinessFacade
                 var isValidStorage = await _context.storageLocations.SingleOrDefaultAsync(x => x.ID == request.StorageLocationId);
                 var isValidCategory = await _context.categories.SingleOrDefaultAsync(x => x.ID == request.CategoryId);
                 var isValidPublisher = await _context.publishers.SingleOrDefaultAsync(x => x.ID == request.PublisherId);
-                if (isValidCategory == null || isValidPublisher == null || isValidStorage == null || request.Jumlah <= 0 || request.InStock > request.Jumlah)
+                if (isValidCategory == null || isValidPublisher == null || isValidStorage == null || request.Jumlah <= 0 || request.InStock > request.Jumlah || request.InStock < 0)
                 {
                     response.Message = ($"Data Update Tidak Valid ");
                     response.StatusCode = false;

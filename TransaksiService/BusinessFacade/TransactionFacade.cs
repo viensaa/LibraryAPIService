@@ -3,6 +3,7 @@ using Azure;
 using Azure.Core;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System;
 using System.Text;
 using System.Text.Json;
 using TransaksiService.DomainObject;
@@ -97,7 +98,25 @@ namespace TransaksiService.BusinessFacade
                         };
                     #endregion
 
-                    //di sini panggil method untuk kurangnain stock buku
+                    #region update stock buku
+                    RequestUpdateStockBuku stockBuku = new RequestUpdateStockBuku();
+                    stockBuku.Id = buku.data.id;
+                    stockBuku.Title = buku.data.title;
+                    stockBuku.CategoryId = buku.data.category.id;
+                    stockBuku.PublisherId = buku.data.publisher.id;
+                    stockBuku.StorageLocationId = buku.data.lokasi.id;
+                    stockBuku.Jumlah = buku.data.jumlah;
+                    stockBuku.InStock = buku.data.inStock - request.Quantity;
+
+
+                    bool IsSuccessUpdateStock = await UpdateStockbuku(stockBuku);
+                    if (!IsSuccessUpdateStock)
+                    {
+                        response.Message = ($"Gagal Update Stock Buku");
+                        response.StatusCode = Convert.ToInt32(enumStatusCode.failure);
+                        return response;
+                    }
+                    #endregion
 
                     _context.Transactions.Add(inputTransaction);
                     await _context.SaveChangesAsync();
@@ -144,10 +163,29 @@ namespace TransaksiService.BusinessFacade
                         } //jika ada 2 data tinggal lanjutkan saja
                         };
                     #endregion
+                    #region update stock buku
+                    RequestUpdateStockBuku stockBuku = new RequestUpdateStockBuku();
+                    stockBuku.Id = buku.data.id;
+                    stockBuku.Title = buku.data.title;
+                    stockBuku.CategoryId = buku.data.category.id;
+                    stockBuku.PublisherId = buku.data.publisher.id;
+                    stockBuku.StorageLocationId = buku.data.lokasi.id;
+                    stockBuku.Jumlah = buku.data.jumlah;
+                    stockBuku.InStock = buku.data.inStock + request.Quantity;
+                    
+
+                    bool IsSuccessUpdateStock = await UpdateStockbuku(stockBuku);
+                    if (!IsSuccessUpdateStock) 
+                    {
+                        response.Message = ($"Gagal Update Stock Buku");
+                        response.StatusCode = Convert.ToInt32(enumStatusCode.failure);
+                        return response;
+                    }
+                    #endregion
 
                     _context.Transactions.Add(inputTransaction);
                     await _context.SaveChangesAsync();
-                    //panggil method update stock di api buku
+                    
 
                     response.Message = ("Create Transaction For Return Success");
                     response.StatusCode = Convert.ToInt32(enumStatusCode.success);
@@ -167,6 +205,33 @@ namespace TransaksiService.BusinessFacade
             return response;
         }
 
+        public async Task<bool> UpdateStockbuku(RequestUpdateStockBuku obj)
+        {
+            bool response = false;
+            var url = "http://localhost:5164/api/Buku/UpdateBuku";//afr2024:di development lanjutannanti akan di mauskkan ke table config di DB
+            var content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
+            var request = new HttpRequestMessage(HttpMethod.Put, url)
+            {
+                Content = content
+            };
+            try
+            {
+                HttpResponseMessage responseAPI = await httpClient.SendAsync(request);
+                if (responseAPI.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    return false;
+                }
+                response = true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
+            return response;
+        }
 
         public  bool CheckValidMahasiswa(RequestSearch request,ref Mahasiswa mahasiswa) 
         {
@@ -182,7 +247,7 @@ namespace TransaksiService.BusinessFacade
         public  async Task<InfoBuku> GetBuku(RequestBuku obj) 
         {
             InfoBuku Data = new();
-            var URL = "http://localhost:5164/api/Buku/ById";//di development lanjutannanti akan di mauskkan ke table config di DB
+            var URL = "http://localhost:5164/api/Buku/ById";//afr2024:di development lanjutannanti akan di mauskkan ke table config di DB
             var content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
             var request = new HttpRequestMessage(HttpMethod.Post, URL)
             {
