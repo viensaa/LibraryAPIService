@@ -128,13 +128,13 @@ namespace LibraryAPI.BusinessFacade
                 .Include(p => p.Publisher)
                  .Include(c => c.Category)
                   .Include(s => s.StorageLocation)
-                .SingleOrDefaultAsync(x => x.Title == request.title);
+                .SingleOrDefaultAsync(x => x.ID == request.BukuId);
 
 
 
             if (results == null) 
             {
-                throw new Exception($"Data dengan Nama {request.title} Tidak Ditemukan");
+                throw new Exception($"Buku dengan ID {request.BukuId} Tidak Ditemukan");
             }
             //proses Mapping Data Manual
             Data dataBukus = new Data();

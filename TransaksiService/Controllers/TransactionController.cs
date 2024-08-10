@@ -45,7 +45,33 @@ namespace TransaksiService.Controllers
             
             return response;
         }
-        //[HttpPost("Peminjaman")]
-       // [HttpPost("Pengembalian")]
+        [HttpPost("CreateTransaction")]
+        public async Task<ActionResult> CreateTransaction(TransactionRequest request) 
+        {
+            BaseResponse response = new();
+            try
+            {
+                var result = await _transaction.CreateTransaction(request);
+                if (result.StatusCode != Convert.ToInt32(enumStatusCode.success))
+                {
+                    response.StatusCode = Convert.ToInt32(enumStatusCode.failure);
+                    response.Message = result.Message;
+
+                }
+                else
+                {
+                    response.StatusCode = Convert.ToInt32(enumStatusCode.success);
+                    response.Message = "Transaction Success";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = Convert.ToInt32(enumStatusCode.failure);
+                response.Message = ex.Message;
+            }
+            return response.StatusCode == Convert.ToInt32(enumStatusCode.success) ? Ok(response) : BadRequest(response);
+        }
+       
+
     }
 }

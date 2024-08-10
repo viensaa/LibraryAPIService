@@ -2,6 +2,6 @@
 {
     public class RequestDataBuku
     {
-        public string title { get; set; }
+        public int BukuId { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 {
     public class RequestDataCustom
     {
+
         public string? Title { get; set; }
         public string? CategoryId { get; set; }
         public string? PublisherId { get; set; }

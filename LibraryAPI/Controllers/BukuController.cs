@@ -29,7 +29,7 @@ namespace LibraryAPI.Controllers
             return results;
         }
 
-        [HttpPost("ByTitle")]
+        [HttpPost("ById")]
         public async Task<ActionResult<dataBuku>> GetByTitle([FromBody]RequestDataBuku request)
         {
             dataBuku response = new();
@@ -41,7 +41,7 @@ namespace LibraryAPI.Controllers
                 if (result == null)
                 {
 
-                    response.Message = $"Buku Dengan Judul {request.title} Tidak Ditemukan";
+                    response.Message = $"Buku Dengan ID {request.BukuId} Tidak Ditemukan";
                     response.StatusCode = false;
                     response.Data = result;
 
