@@ -7,7 +7,7 @@
        // public int StaffId { get; set; }
         public int TransactionType { get; set; } // "1. borrow" or "2. return"
         public DateTime TransactionDate { get; set; }
-        public int Status { get; set; }
+       // public int Status { get; set; }
 
 
         //public Staff Staff { get; set; }

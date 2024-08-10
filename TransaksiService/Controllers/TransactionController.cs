@@ -61,7 +61,7 @@ namespace TransaksiService.Controllers
                 else
                 {
                     response.StatusCode = Convert.ToInt32(enumStatusCode.success);
-                    response.Message = "Transaction Success";
+                    response.Message = result.Message.ToString();
                 }
             }
             catch (Exception ex)

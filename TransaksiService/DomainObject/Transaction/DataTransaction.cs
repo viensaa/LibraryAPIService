@@ -10,7 +10,7 @@ namespace TransaksiService.DomainObject.Transaction
         public DataMahasiswa Mahasiswa { get; set; }
         public ICollection<DataTransactionDetail> Details { get; set; }
         public DateTime TransactionDate { get; set; }
-        public int Status { get; set; }
+       // public int Status { get; set; }
 
     }
 
